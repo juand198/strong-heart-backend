@@ -14,7 +14,7 @@ const registerRules = [
   body('email')
     .isEmail().withMessage('Email inválido')
     .isLength({ max: 254 }).withMessage('Email demasiado largo')
-    .normalizeEmail()
+    .toLowerCase()
     .trim(),
   body('password')
     .isLength({ min: 8, max: 128 }).withMessage('La contraseña debe tener entre 8 y 128 caracteres')
@@ -31,7 +31,7 @@ const registerRules = [
 ];
 
 const loginRules = [
-  body('email').isEmail().withMessage('Email inválido').normalizeEmail().trim(),
+  body('email').isEmail().withMessage('Email inválido').toLowerCase().trim(),
   body('password').notEmpty().withMessage('La contraseña es obligatoria').isLength({ max: 128 }),
 ];
 
