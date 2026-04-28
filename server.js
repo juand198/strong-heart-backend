@@ -26,6 +26,9 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
 
 const app = express();
 
+// Render (y la mayoría de plataformas cloud) usan un proxy inverso
+app.set('trust proxy', 1);
+
 // ─── Conexión a base de datos ───────────────────────────────────────────────
 connectDB();
 
