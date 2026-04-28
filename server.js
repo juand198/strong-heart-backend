@@ -98,8 +98,8 @@ app.use('/api/admin',    adminRoutes);
 app.use('/api/reviews',  reviewRoutes);
 app.use('/api/chat',     chatRoutes);
 
-// Setup inicial — solo disponible en desarrollo
-if (process.env.NODE_ENV !== 'production') {
+// Setup inicial — disponible en desarrollo o con ALLOW_SETUP=true (eliminar tras crear el admin)
+if (process.env.NODE_ENV !== 'production' || process.env.ALLOW_SETUP === 'true') {
   app.post('/api/setup/admin', require('./routes/setupRoute'));
 }
 
